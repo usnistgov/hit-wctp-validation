@@ -93,6 +93,8 @@ public class Validator {
 			SAXReader reader = new SAXReader();
 			reader.setValidation(false);
 			reader.setErrorHandler(errorHandler);
+			reader.setIncludeExternalDTDDeclarations(false);
+		
 			this.messageDocument = reader.read(IOUtils.toInputStream(messageFile, StandardCharsets.UTF_16));
 		} catch (DocumentException e) {
 			System.out.println("A system error occured with document creation.");
@@ -110,6 +112,7 @@ public class Validator {
 			schemaFinder();
 			InputStream is = Validator.class.getResourceAsStream(messageSchema);
 			factory.setSchema(schemaFactory.newSchema(new StreamSource(is)));
+			factory.setXIncludeAware(false);			
 			SAXParser parser = factory.newSAXParser();
 			SAXReader reader = new SAXReader(parser.getXMLReader());
 			reader.setValidation(false);

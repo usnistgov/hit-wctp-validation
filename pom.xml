@@ -51,14 +51,14 @@
 	</build>
 	
 	<distributionManagement>
-        <repository>
-            <id>releases</id>
-            <url>https://hit-dev.nist.gov:9001/repository/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Internal Snapshots</name>
-            <url>https://hit-dev.nist.gov:9001/repository/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>    
+		<repository>
+			<id>releases</id>
+			<url>https://hit-nexus.nist.gov/repository/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>https://hit-nexus.nist.gov/repository/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
