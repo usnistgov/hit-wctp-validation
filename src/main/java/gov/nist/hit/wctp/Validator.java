@@ -90,7 +90,14 @@ public class Validator {
 	private boolean createDocument() {
 		SchemaErrorHandler errorHandler = new SchemaErrorHandler(messageReport, wctpreport, "schema");
 		try {
-			SAXReader reader = new SAXReader();
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+			factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+			factory.setXIncludeAware(false);			
+			SAXParser parser = factory.newSAXParser();
+			SAXReader reader = new SAXReader(parser.getXMLReader());
 			reader.setValidation(false);
 			reader.setErrorHandler(errorHandler);
 			reader.setIncludeExternalDTDDeclarations(false);
@@ -100,6 +107,12 @@ public class Validator {
 			System.out.println("A system error occured with document creation.");
 //			System.exit(1);
 			wctpreport.addSchemaEntry(new WCTPEntry("Could not ", "schema", "error", "N/A"));
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return errorHandler.getValidation();
 	}
@@ -112,11 +125,16 @@ public class Validator {
 			schemaFinder();
 			InputStream is = Validator.class.getResourceAsStream(messageSchema);
 			factory.setSchema(schemaFactory.newSchema(new StreamSource(is)));
+			factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+			factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+			factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+			factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 			factory.setXIncludeAware(false);			
 			SAXParser parser = factory.newSAXParser();
 			SAXReader reader = new SAXReader(parser.getXMLReader());
 			reader.setValidation(false);
 			reader.setErrorHandler(errorHandler);
+			reader.setIncludeExternalDTDDeclarations(false);
 			reader.read(IOUtils.toInputStream(messageFile, StandardCharsets.UTF_16));
 		} catch (SAXException e) {
 			e.printStackTrace();
