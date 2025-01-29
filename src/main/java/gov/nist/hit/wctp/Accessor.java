@@ -1,6 +1,5 @@
 package gov.nist.hit.wctp;
 
-import java.io.File;
 import java.util.List;
 
 import org.dom4j.Document;

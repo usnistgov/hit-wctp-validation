@@ -1,17 +1,16 @@
 package gov.nist.hit.wctp;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import gov.nist.validation.report.Entry;
-import gov.nist.validation.report.Trace;
-import gov.nist.validation.report.impl.JsonObjectMapper;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by mcl1 on 9/16/15.
- */
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import gov.nist.validation.report.Entry;
+import gov.nist.validation.report.Trace;
+import gov.nist.validation.report.impl.JsonObjectMapper;
+
+
 public class WCTPEntry implements Entry {
 
     private int line;
@@ -125,4 +124,25 @@ public class WCTPEntry implements Entry {
     public String toString() {
         return this.toText();
     }
+    
+    @Override
+	public String getMessageInstancePathName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageInstancePositionPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageProfilePath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getMessageProfilePositionPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
