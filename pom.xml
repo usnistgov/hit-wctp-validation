@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>gov.nist.hit.validation</groupId>
 	<artifactId>hit-wctp-validation</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<name>hit-wctp-validation</name>
 
 	<dependencies>
@@ -66,6 +66,6 @@
 		<connection>scm:git:https://github.com/usnistgov/hit-wctp-validation.git</connection>
 		<url>scm:git:https://github.com/usnistgov/hit-wctp-validation.git</url>
 		<developerConnection>scm:git:https://github.com/usnistgov/hit-wctp-validation.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>hit-wctp-validation-1.0.2</tag>
   </scm>
 </project>
